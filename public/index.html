@@ -11,7 +11,14 @@
     <h1 class="mt-2">Socket Client</h1>
     <hr>
 
-    <script src="./socket.io/socket.io.js"></script>
-    <script src="./js/socket-client.js"></script>
+
+    <p>
+        Server status:
+        <span id="lblOnline" class="text-success">Online</span>
+        <span id="lblOffline" class="text-danger">Offline</span>
+    </p>
+    
+    <script src="./socket.io/socket.io.js"></script> <!--Con esto ya tenemos configurado el io y es lo que usaremos en nuestro cliente socket-->
+    <script src="./js/socket-client.js"></script> <!--Llamando a nuestro script-->
 </body>
 </html> 
