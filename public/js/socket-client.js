@@ -14,7 +14,7 @@ socket.on('connect', ()=>{
     lblOnline.style.display = '';
 })
 socket.on('disconnect', ()=>{
-    console.log('desconectado del server');
+    //console.log('desconectado del server');
 
     //mostrara en html si esta online u offline
     lblOffline.style.display = '';
@@ -33,5 +33,7 @@ btnEnviar.addEventListener('click', ()=>{
         id: '123abc',
         fecha: new Date().getTime()
     }
-    socket.emit('enviar-mensaje', payload); //mandar este emit al servidor.model en los sockets
+    socket.emit('enviar-mensaje', payload, (id)=>{
+        console.log('desde el server', id)
+    }); //mandar este emit al servidor.model en los sockets
 })

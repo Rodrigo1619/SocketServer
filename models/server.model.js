@@ -45,8 +45,12 @@ class Server {
                 console.log('cliente desconectado', socket.id);
             });
 
-            socket.on('enviar-mensaje', (payload)=>{ //recibimos el mensaje que se manda desde el frontend 
-                this.io.emit('enviar-mensaje', payload) //aqui el server manda el mensaje al frontend
+            //recibimos el mensaje que se manda desde el frontend
+            socket.on('enviar-mensaje', (payload, callback)=>{ //el callback es la funcion que tenemos en el cliente de enviar-mensaje
+                //this.io.emit('enviar-mensaje', payload) //aqui el server manda el mensaje al frontend
+
+                const id = 12345612;
+                callback(id);
             })
 
         })
