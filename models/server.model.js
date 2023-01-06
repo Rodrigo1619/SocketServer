@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
+const { socketController } = require('../sockets/controller.socket');
+
 
 class Server {
 
@@ -39,21 +41,7 @@ class Server {
         //this.app.use( this.paths.auth, require('../routes/auth')); se deja como ejemplo por si se quiere usar
     }
     sockets(){
-        this.io.on('connection', socket =>{
-
-            socket.on('disconnect', () =>{
-                console.log('cliente desconectado', socket.id);
-            });
-
-            //recibimos el mensaje que se manda desde el frontend
-            socket.on('enviar-mensaje', (payload, callback)=>{ //el callback es la funcion que tenemos en el cliente de enviar-mensaje
-                //this.io.emit('enviar-mensaje', payload) //aqui el server manda el mensaje al frontend
-
-                const id = 12345612;
-                callback(id);
-            })
-
-        })
+        this.io.on('connection', socketController)
     }
 
     listen() {
