@@ -7,7 +7,7 @@ const btnEnviar  = document.querySelector('#btnEnviar');
 const socket = io(); // con esto si recargamos el navegador web ya podremos ver el cliente conectado
 
 socket.on('connect', ()=>{
-    console.log('conectado');
+    //console.log('conectado');
     
     //mostrara en html si esta online u offline
     lblOffline.style.display = 'none';
@@ -19,6 +19,11 @@ socket.on('disconnect', ()=>{
     //mostrara en html si esta online u offline
     lblOffline.style.display = '';
     lblOnline.style.display = 'none';
+})
+
+//mandar el mismo nombre que hemos puesto en el server.model ya que aqui se esta escuchando para mostrar en el frontend
+socket.on('enviar-mensaje', (payload)=>{//payload que estamos recibiendo desde el socket del server.model
+    console.log(payload)
 })
 
 btnEnviar.addEventListener('click', ()=>{
